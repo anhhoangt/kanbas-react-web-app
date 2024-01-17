@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <div>
+      <h2>Anh Hoang</h2>
+    </div>
+    <div>
+      <form action="edit-profile">
+        <label for="username">Name:*</label>
+        <input type="text" id="name" name="name" value="Anh Hoang" />
+
+        <label for="pronouns">Pronouns:</label>
+        <select name="pronouns" id="pronouns">
+          <option value="he/him">He/Him</option>
+          <option value="she/her">She/Her</option>
+          <option value="they/them">They/Them</option>
+        </select>
+        <br />
+
+        <label for="title">Title</label>
+        <input type="text" id="title" />
+      </form>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>
+        No registered services, you can add some on the
+        <a href="https://google./com">settings</a> page
+      </p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>
+        No registered services, you can add some on the
+        <a href="https://google./com">settings</a> page
+      </p>
+    </div>
+
+    <div>
+      <h3>Biography</h3>
+      <p>Faculty, Software Engineer, AI, Space, and renewable enthusiast</p>
+      <textarea type="text" id="bio" style="width: 500px">
+        Faculty, Software Engineer, AI, Space, and renewable enthusiast
+      </textarea>
+    </div>
+
+    <div>
+      <h3>Links</h3>
+      <ul>
+        <li>
+          <a href="https://youtube.com">YouTube</a>
+          <a href="#">Links to an external site</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th></th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <input type="text" value="YouTube" />
+            </th>
+            <td>→</td>
+            <td>
+              <input type="text" value="https://youtube.com" />
+            </td>
+            <td>
+              <a href="#">Remove</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button>Add another link</button> <br />
+      <button>Cancel</button>
+      <button onclick="window.location.href='../screen.html'">
+        Save Profile
+      </button>
+      <br />
+      <button>Edit Profile</button>
+      <button onclick="window.location.href='../screen.html'">
+        Cancel Editing
+      </button>
+    </div>
+  </body>
+</html>

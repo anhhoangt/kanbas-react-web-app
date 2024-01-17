@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grades</title>
+  </head>
+  <body>
+    <div>
+      <!-- create a dropdown called Gradebook -->
+      <select>
+        <option>Gradebook</option>
+      </select>
+      <button>Import</button>
+      <select>
+        <option>Export</option>
+      </select>
+      <button>Configue</button>
+    </div>
+
+    <div>
+      <!-- create a form with 2 labels Student Name and Assignment Name, 1 button called Apply Filters -->
+      <form id="grade-search">
+        <label for="student-name">Student Names</label>
+        <br />
+        <input id="student-name" type="text" placeholder="Search Students" />
+        <br />
+        <label>Assignment Names</label>
+        <br />
+        <input
+          type="text"
+          id="assignment-name"
+          placeholder="Search Assignments"
+        />
+        <br />
+        <button>Apply Filters</button>
+      </form>
+    </div>
+
+    <div>
+      <table border="2" width="80%">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>A1 SETUP Out of 100</th>
+            <th>A2 HTML Out of 100</th>
+            <th>A3 CSS Out of 100</th>
+            <th>A4 BOOTSTRAP Out of 100</th>
+            <th>A5 JAVASCRIPT Out of 100</th>
+            <th>A6 REACT Out of 100</th>
+            <th>A7 REDUX Out of 100</th>
+            <th>A8 NODE Out of 100</th>
+            <th>A9 MONGO Out of 100</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice W</td>
+            <td align="center">100</td>
+            <td align="center">90</td>
+            <td align="center">80</td>
+            <td align="center">78</td>
+            <td align="center">58</td>
+            <td align="center">80</td>
+            <td align="center">90</td>
+            <td align="center">
+              <input
+                type="text"
+                value="86"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+          </tr>
+          <tr>
+            <td>Kaylee N</td>
+            <td align="center">98</td>
+            <td align="center">75</td>
+            <td align="center">100</td>
+            <td align="center">78</td>
+            <td align="center">85</td>
+            <td align="center">100</td>
+            <td align="center">
+              <input
+                type="text"
+                value="96"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">90</td>
+          </tr>
+          <tr>
+            <td>Aiden H</td>
+            <td align="center">100</td>
+            <td align="center">96</td>
+            <td align="center">100</td>
+            <td align="center">97</td>
+            <td align="center">100</td>
+            <td align="center">
+              <input
+                type="text"
+                value="92"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">93</td>
+            <td align="center">100</td>
+          </tr>
+          <tr>
+            <td>Tony B</td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">89</td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">
+              <input
+                type="text"
+                value="100"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">86</td>
+            <td align="center">100</td>
+          </tr>
+          <tr>
+            <td>Samuel Z</td>
+            <td align="center">100</td>
+            <td align="center">90</td>
+            <td align="center">100</td>
+            <td align="center">
+              <input
+                type="text"
+                value="86"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">58</td>
+            <td align="center">100</td>
+            <td align="center">86</td>
+          </tr>
+          <tr>
+            <td>Valentino K</td>
+            <td align="center">100</td>
+            <td align="center">98</td>
+            <td align="center">100</td>
+            <td align="center">
+              <input
+                type="text"
+                value="86"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">35</td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+          </tr>
+          <tr>
+            <td>Martin G</td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">78</td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+            <td align="center">50</td>
+            <td align="center">
+              <input
+                type="text"
+                value="86"
+                style="text-align: center; width: 50px"
+              />
+            </td>
+            <td align="center">100</td>
+            <td align="center">100</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
