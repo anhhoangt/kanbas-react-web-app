@@ -7,113 +7,249 @@
     <link rel="stylesheet" href="../../../styles.css" />
     <link rel="stylesheet" href="../../Navigation/index.css" />
     <link rel="stylesheet" href="../Navigation/index.css" />
+    <link rel="stylesheet" href="index.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
   </head>
   <body>
-    <table>
-      <!-- kanbas -->
-      <td valign="top">
-        <ul class="wd-kanbas-navigation">
-          <li>
-            <img src="../../../KingHuskyHead.ico" alt="icon" width="50px" />
-          </li>
+    <div class="container-block">
+      <div class="row wd-entire-page">
+        <!-- kanbas -->
+        <!-- <div class="d-none d-md-block"> -->
+        <div class="col col-auto">
+          <ul class="wd-kanbas-navigation">
+            <li>
+              <img src="../../../KingHuskyHead.ico" alt="icon" width="50px" />
+            </li>
 
-          <li>
-            <a href="/Kanbas/Account/Navigation/index.html">
-              <i class="fas fa-user" style="color: white"></i> Account
-            </a>
-          </li>
-          <li>
-            <a href="/Kanbas/Dashboard/screen.html"
-              ><i class="fas fa-tachometer-alt"></i>Dashboard</a
-            >
-          </li>
-          <li class="wd-active">
-            <a href="/Kanbas/Courses/Home/screen.html">
-              <i class="fas fa-book"></i>Courses
-            </a>
-          </li>
-          <li>
-            <a href="/Kanbas/Calendar/index.html"
-              ><i class="fa fa-calendar"></i>Calendar</a
-            >
-          </li>
-          <li>
-            <a href="/Kanbas/Inbox/index.html"
-              ><i class="fas fa-inbox"></i> <br />Inbox</a
-            >
-          </li>
+            <li>
+              <a href="/Kanbas/Account/Navigation/index.html">
+                <i class="fas fa-user" style="color: white"></i> Account
+              </a>
+            </li>
+            <li>
+              <a href="/Kanbas/Dashboard/screen.html"
+                ><i class="fas fa-tachometer-alt"></i>Dashboard</a
+              >
+            </li>
+            <li class="wd-active">
+              <a href="/Kanbas/Courses/Home/screen.html">
+                <i class="fas fa-book"></i>Courses
+              </a>
+            </li>
+            <li>
+              <a href="/Kanbas/Calendar/index.html"
+                ><i class="fa fa-calendar"></i>Calendar</a
+              >
+            </li>
+            <li>
+              <a href="/Kanbas/Inbox/index.html"
+                ><i class="fas fa-inbox"></i> <br />Inbox</a
+              >
+            </li>
 
-          <li>
-            <a href="/Kanbas/History/index.html"
-              ><i class="fas fa-history"></i>History</a
-            >
-          </li>
-          <li>
-            <a href="/Kanbas/Studio/index.html"
-              ><i class="fas fa-film"></i> <br />Studio</a
-            >
-          </li>
-          <li>
-            <a href="/Kanbas/Commons/index.html"
-              ><i class="fas fa-users"></i>Commons</a
-            >
-          </li>
-          <li>
-            <a href="/Kanbas/Help/index.html"
-              ><i class="fas fa-question-circle"></i> <br />Help</a
-            >
-          </li>
-          <li>
-            <a href="/Kanbas/Message/index.html"
-              ><i class="fas fa-envelope"></i>Message</a
-            >
-          </li>
-        </ul>
-      </td>
-
-      <!-- courses -->
-      <td valign="top">
-        <ul class="wd-navigation">
-          <li>
-            <a href="/Kanbas/Courses/Home/screen.html"> Home</a>
-          </li>
-          <li>
-            <a href="/Kanbas/Courses/Modules/screen.html"> Modules</a>
-          </li>
-          <li><a href="/Kanbas/Courses/Piazza/index.html"> Piazza</a></li>
-          <li><a href="/Kanbas/Courses/Grades/screen.html"> Grades</a></li>
-          <li class="wd-active">
-            <a href="/Kanbas/Courses/Assignments/screen.html"> Assignments</a>
-          </li>
-          <li>
-            <a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
-              Settings</a
-            >
-          </li>
-        </ul>
-      </td>
-
-      <!-- assignments -->
-      <td valign="top">
-        <div>
-          <!-- a text field -->
-          <input id="assignment-search" placeholder="Search for Assignments" />
-          <button>Group</button>
-          <button>Assignment</button>
-          <select id="assignment-date-sort">
-            <option value="due-date">Edit Assignment Date</option>
-            <option value="course">Course</option>
-            <option value="status">Status</option>
-          </select>
+            <li>
+              <a href="/Kanbas/History/index.html"
+                ><i class="fas fa-history"></i>History</a
+              >
+            </li>
+            <li>
+              <a href="/Kanbas/Studio/index.html"
+                ><i class="fas fa-film"></i> <br />Studio</a
+              >
+            </li>
+            <li>
+              <a href="/Kanbas/Commons/index.html"
+                ><i class="fas fa-users"></i>Commons</a
+              >
+            </li>
+            <li>
+              <a href="/Kanbas/Help/index.html"
+                ><i class="fas fa-question-circle"></i> <br />Help</a
+              >
+            </li>
+            <li>
+              <a href="/Kanbas/Message/index.html"
+                ><i class="fas fa-envelope"></i>Message</a
+              >
+            </li>
+          </ul>
         </div>
-        <!-- a line break -->
-        <hr />
 
-        <div>
+        <div class="col">
+          <!-- breadcrumb -->
+          <div class="row mb-1 mx-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="col p-0 wd-breadcrumb-container">
+                <div class="d-flex bg-white">
+                  <button class="wd-hamburger-button">
+                    <i class="fa fa-bars fa-2x"></i>
+                  </button>
+                  <nav id="wd-bread" aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item" aria-current="page">
+                        <a href="courses.html"> CS5610.11550.202410 </a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Assignments
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+
+              <button type="button" class="btn wd-student-view-button">
+                <i class="fa fa-glasses"></i>
+                Student View
+              </button>
+            </div>
+            <hr />
+          </div>
+
+          <!-- courses -->
+          <div class="row m-1">
+            <div class="col col-auto m-2 p-0 wd-expanded-nav-container">
+              <ul class="wd-navigation">
+                <li>
+                  <a href="/Kanbas/Courses/Home/screen.html"> Home</a>
+                </li>
+                <li>
+                  <a href="/Kanbas/Courses/Modules/screen.html"> Modules</a>
+                </li>
+                <li><a href="/Kanbas/Courses/Piazza/index.html"> Piazza</a></li>
+                <li>
+                  <a href="/Kanbas/Courses/Grades/screen.html"> Grades</a>
+                </li>
+                <li class="wd-active">
+                  <a href="/Kanbas/Courses/Assignments/screen.html">
+                    Assignments</a
+                  >
+                </li>
+                <li>
+                  <a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
+                    Settings</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- assignments -->
+            <div class="col">
+              <div class="row">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="col-md-6">
+                    <input
+                      class="form-control w-25"
+                      id="assignment-search"
+                      placeholder="Search for Assignments"
+                    />
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-end">
+                    <button class="btn btn-light">
+                      <i class="fa fa-plus"></i>
+                      Group
+                    </button>
+                    <button class="btn btn-danger">
+                      <i class="fa fa-plus"></i>
+                      Assignment
+                    </button>
+                    <button class="btn btn-light">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <ul class="list-group wd-assignments">
+                <li class="list-group-item">
+                  <div class="d-flex">
+                    <div class="me-auto"><b>︙︙</b> Assignments</div>
+                    <span
+                      class="d-flex align-items-center w-20 justify-content-between"
+                    >
+                      <p class="wd-assignments-percent-total">40% of total</p>
+                      <i class="fa fa-plus ms-2"></i>
+                      <i class="fa fa-ellipsis-v ms-2"></i>
+                    </span>
+                  </div>
+                  <div class="d-flex">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <div class="wd-assignments-list-item">
+                          <div class="float-start">
+                            <b>︙︙</b>
+                            <i class="fa fa-book"></i>
+                          </div>
+                          <div>
+                            <a
+                              href="Edit/screen.html"
+                              class="text-decoration-none"
+                              >A1 SETUP</a
+                            >
+                            <div class="small">
+                              <p>
+                                Week 0 - Setup - week starting on Monday January
+                                15th
+                              </p>
+                              <p>
+                                <b>Due</b> February 22nd at 11:59pm | 100 pts
+                              </p>
+                            </div>
+                          </div>
+                          <div class="float-end">
+                            <i class="fa fa-check-circle text-success"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="list-group-item">
+                        <div class="wd-assignments-list-item">
+                          <div class="float-start">
+                            <b>︙︙</b>
+                            <i class="fa fa-book"></i>
+                          </div>
+                          <div>
+                            <a
+                              href="Edit/screen.html"
+                              class="text-decoration-none"
+                              >A2 HTML</a
+                            >
+                            <div class="small">
+                              <p>
+                                Week 1 - HTML - week starting on Monday January
+                                31th
+                              </p>
+                              <p>
+                                <b>Due</b> February 32nd at 11:59pm | 100 pts
+                              </p>
+                            </div>
+                          </div>
+                          <div class="float-end">
+                            <i class="fa fa-check-circle text-success"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- assignment table -->
+<!-- <div>
           <h3 style="display: inline">ASSIGNMENTS 40% of Total</h3>
           <select name="assign-action" id="assign-action">
             <option value="edit" checked>Edit</option>
@@ -215,8 +351,4 @@
               <a href="#">Multiple Modules</a> | Not available yet
             </li>
           </ul>
-        </div>
-      </td>
-    </table>
-  </body>
-</html>
+        </div> -->
