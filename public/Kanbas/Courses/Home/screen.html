@@ -1,19 +1,27 @@
 <html>
   <head>
     <title>Home</title>
-    <link rel="stylesheet" href="../../../styles.css">
-    <link rel="stylesheet" href="../../Navigation/index.css" />
-    <link rel="stylesheet" href="../Navigation/index.css">
+    <!-- <link rel="stylesheet" href="../../../styles.css"> -->
+    <!-- <link rel="stylesheet" href="../../Navigation/index.css" /> -->
+    <!-- <link rel="stylesheet" href="../Navigation/index.css"> -->
     <link
     rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-  />
+    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Home/index.css" />
+    <link rel="stylesheet" href="../Modules/index.css">
+  
   </head>
   <body>
-    <table>
-        <!-- 1st column -->
-        <td valign="top">
-          <ul class="wd-kanbas-navigation">
+    <!-- Implement links to Kanbas and Course Navigation -->
+    <div class="d-flex">
+      <div class="d-none d-md-block">
+        <ul class="wd-kanbas-navigation">
+          
             <li>
               <img src="../../../KingHuskyHead.ico" alt="icon" width="50px" />
             </li>
@@ -69,12 +77,12 @@
                 ><i class="fas fa-envelope"></i>Message</a
               >
             </li>
-          </ul>
-        </td>
-
-        <!-- 2nd column -->
-        <td valign="top">
-          <ul class="wd-navigation">
+          
+        </ul>
+      </div>
+      <div class="d-none d-md-block">
+        <ul class="wd-navigation">
+          
             <li class="wd-active">
               <a href="/Kanbas/Courses/Home/screen.html"> Home</a>
             </li>
@@ -91,140 +99,156 @@
                 Settings</a
               >
             </li>
-          </ul>
-        </td>
+          
+        </ul>
+      </div>
+      <div class="flex-fill">
+        <!-- appear when screen side less than medium -->
+        <div class="d-md-none p-2" style="background-color: black; color: white; text-align: center; height:  40px;">
+          <span style="float: left">
+            <a href="/Kanbas/Navigation/index.html"><i class="fa fa-ellipsis-v ms-2"></i></a>
+          </span>
+          CS5610 - Web Development
+          <span class="float-end">
+            <a href="/Kanbas/Courses/Navigation/index.html">
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </span>
+        </div>
+        <ul class="list-group wd-modules">
+          <div id="left-side">
+            <!-- create a div include 3 button call Collapse All, View Progress, Module and a drop down called Publish All -->
+            <div>
+              <button class="btn btn-primary">Collapse All</button>
+              <button class="btn btn-primary">View Progress</button>
+              <select>
+                <option>Publish All</option>
+              </select>
+              <button class="btn btn-danger select">Module +</button>
+            </div>
+            <hr>
+            <!-- create a div include nested bullet lists listing Week 0, Week 1, and Learning Objectives under each -->
+            <div>
+              <ul>
+                <li>Week 0 - INTRO</li>
+                <!-- a unordered list under week 0 which items called: LEARNING OBJECTIVES, READING, SLIDES -->
+                <ul>
+                  <li>LEARNING OBJECTIVES</li>
+                  <ul>
+                    <li>Introduction to the course</li>
+                    <li>Learn what is Web Development</li>
+                    <li>Creating a development environment</li>
+                    <li>Creating a Web Application</li>
+                    <li>Getting started with the 1st assignment</li>
+                  </ul>
+                  <li>READING</li>
+                  <ul>
+                    <li>Full Stack Developer - Chapter 1 - Introduction</li>
+                    <li>
+                      Full Stack Developer - Chapter 2 - Creating User
+                      Interfaces With HTML
+                    </li>
+                  </ul>
+                  <li>SLIDES</li>
+                  <ul>
+                    <li>
+                      <a
+                        href="https://docs.google.com/presentation/d/1yb_fQd5MhVuFczb5F5II0CoDkVJALFqxUnuwPAXiOAU/edit#slide=id.g40a3481019_0_0"
+                        >Introduction to Web Development</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://docs.google.com/presentation/d/16yDwIH8np-tQL85g4bpmrsDfO8LaW38jr-fMQirLnoQ/edit#slide=id.p"
+                        >Creating an HTTP server with Node.js</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://docs.google.com/presentation/d/10B3jLiJ8-HMsA6TPq9JuWfJzsvX9SFnYVuhthrQbFwU/edit#slide=id.p"
+                        >Creating a React Application</a
+                      >
+                    </li>
+                  </ul>
+                </ul>
+                <li>Week 1 - HTML</li>
+                <ul>
+                  <li>LEARNING OBJECTIVES</li>
+                  <ul>
+                    <li>Learn how to create user interfaces with HTML</li>
+                    <li>Keep working on assignment 1</li>
+                    <li>Deploy the assignment to Netlify</li>
+                  </ul>
+                  <li>READINGS</li>
+                  <ul>
+                    <li>Full Stack Developer - Chapter 1 - Introduction</li>
+                    <li>
+                      Full Stack Developer - Chapter 2 - Creating User
+                      Interfaces With HTML
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="flex-grow-0 me-2 d-none d-lg-block" style="width: 250px">
+        <h3>Course Status</h3>
+          <!-- Implement Course Status here -->
+          <div>
+            <button class="btn btn-primary">Unpublish</button>
+            <button class="btn btn-primary">Published</button>
 
-        <!-- 3rd col -->
-        <td valign="top">
-            <table style="width: 100%">
-                <tr>
-                  <td style="width: 60%">
-                    <div id="left-side"">
-                      <!-- create a div include 3 button call Collapse All, View Progress, Module and a drop down called Publish All -->
-                      <button>Collapse All</button>
-                      <button>View Progress</button>
-                      <select>
-                        <option>Publish All</option>
-                      </select>
-                      <button>Module</button>
-                      <!-- create a div include nested bullet lists listing Week 0, Week 1, and Learning Objectives under each -->
-                      <div>
-                        <ul>
-                          <li>Week 0 - INTRO</li>
-                          <!-- a unordered list under week 0 which items called: LEARNING OBJECTIVES, READING, SLIDES -->
-                          <ul>
-                            <li>LEARNING OBJECTIVES</li>
-                            <ul>
-                              <li>Introduction to the course</li>
-                              <li>Learn what is Web Development</li>
-                              <li>Creating a development environment</li>
-                              <li>Creating a Web Application</li>
-                              <li>Getting started with the 1st assignment</li>
-                            </ul>
-                            <li>READING</li>
-                            <ul>
-                              <li>Full Stack Developer - Chapter 1 - Introduction</li>
-                              <li>
-                                Full Stack Developer - Chapter 2 - Creating User
-                                Interfaces With HTML
-                              </li>
-                            </ul>
-                            <li>SLIDES</li>
-                            <ul>
-                              <li>
-                                <a
-                                  href="https://docs.google.com/presentation/d/1yb_fQd5MhVuFczb5F5II0CoDkVJALFqxUnuwPAXiOAU/edit#slide=id.g40a3481019_0_0"
-                                  >Introduction to Web Development</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  href="https://docs.google.com/presentation/d/16yDwIH8np-tQL85g4bpmrsDfO8LaW38jr-fMQirLnoQ/edit#slide=id.p"
-                                  >Creating an HTTP server with Node.js</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  href="https://docs.google.com/presentation/d/10B3jLiJ8-HMsA6TPq9JuWfJzsvX9SFnYVuhthrQbFwU/edit#slide=id.p"
-                                  >Creating a React Application</a
-                                >
-                              </li>
-                            </ul>
-                          </ul>
-                          <li>Week 1 - HTML</li>
-                          <ul>
-                            <li>LEARNING OBJECTIVES</li>
-                            <ul>
-                              <li>Learn how to create user interfaces with HTML</li>
-                              <li>Keep working on assignment 1</li>
-                              <li>Deploy the assignment to Netlify</li>
-                            </ul>
-                            <li>READINGS</li>
-                            <ul>
-                              <li>Full Stack Developer - Chapter 1 - Introduction</li>
-                              <li>
-                                Full Stack Developer - Chapter 2 - Creating User
-                                Interfaces With HTML
-                              </li>
-                            </ul>
-                          </ul>
-                        </ul>
-                      </div>
-                    </div>
-                  </td>
-                  <td style="width: 40%">
-                    <div id="right-side">
-                      <h2>Course Status</h2>
-                      <div>
-                        <button>Unpublish</button>
-                        <button>Published</button>
-          
-                        <ul>
-                          <li>
-                            <a href="https://www.google.com/">Import Existing Content</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">Import From Commons</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">Choose Home Page</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">View Course Stream</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">View Course Statistics</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">New Analytics</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">View Course Notification</a>
-                          </li>
-                        </ul>
-                      </div>
-          
-                      <h2>Comming Up</h2>
-                      <div>
-                        <a href="">View Calendar</a>
-          
-                        <ul>
-                          <li>
-                            <a href="https://www.google.com/">Lecture 1</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">Assignment 1</a>
-                          </li>
-                          <li>
-                            <a href="https://www.google.com/">Quiz 1</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-        </td>
-    </table>
+            <ul>
+              <li>
+                <a href="https://www.google.com/">Import Existing Content</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">Import From Commons</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">Choose Home Page</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">View Course Stream</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">View Course Statistics</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">New Analytics</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">View Course Notification</a>
+              </li>
+            </ul>
+          </div>
+
+          <h2>Comming Up</h2>
+          <div>
+            <a href="">View Calendar</a>
+
+            <ul>
+              <li>
+                <a href="https://www.google.com/">Lecture 1</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">Assignment 1</a>
+              </li>
+              <li>
+                <a href="https://www.google.com/">Quiz 1</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
+
+
+
+
+

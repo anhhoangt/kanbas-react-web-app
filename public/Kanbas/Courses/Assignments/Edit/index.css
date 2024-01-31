@@ -1,0 +1,15 @@
+.wd-assign-edit {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.wd-assign-edit-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 200px;
+  width: 150px;
+}
