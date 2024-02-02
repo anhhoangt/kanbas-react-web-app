@@ -185,8 +185,9 @@
                     <div style="padding-left: 150px">
                       <div class="row">
                         <div class="col">
-                          <label class="form-label" for="point">Point</label>
-                          <br />
+                          <div class="text-end">
+                            <label class="form-label" for="point">Point</label>
+                          </div>
                         </div>
                         <div class="col">
                           <input
@@ -197,26 +198,27 @@
                             value="100"
                           />
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <label class="form-label" for="assignment-group"
-                              >Assignment Group</label
-                            >
-                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col text-end">
+                          <label class="form-label" for="assignment-group"
+                            >Assignment Group</label
+                          >
+                        </div>
 
-                          <div class="col">
-                            <select class="form-select" name="#" id="#">
-                              <option value="assignment-group">
-                                Assignments
-                              </option>
-                            </select>
-                          </div>
+                        <div class="col">
+                          <select class="form-select" name="#" id="#">
+                            <option value="assignment-group">
+                              Assignments
+                            </option>
+                          </select>
                         </div>
                       </div>
+
                       <br />
 
                       <div class="row">
-                        <div class="col">
+                        <div class="col text-end">
                           <label class="form-label" for="display"
                             >Display Grade as</label
                           >
@@ -229,7 +231,7 @@
                       </div>
 
                       <div class="row">
-                        <div class="col">
+                        <div class="col text-end">
                           <label class="form-label" for="submission-type"
                             >Submission Type</label
                           >
@@ -241,86 +243,87 @@
                         </div>
                       </div>
 
-                      <fieldset class="row">
-                        <legend class="col col-form-label">
-                          Online Entry Options
-                        </legend>
-                        <br />
-                        <div class="form-check" style="padding-left: 150px">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="text"
-                            name="entry"
-                          />
-                          <label class="form-check-label" for="text"
-                            >Text Entry</label
-                          >
-                        </div>
+                      <div>
+                        <fieldset class="row">
+                          <legend class="col col-form-label">
+                            Online Entry Options
+                          </legend>
+                          <br />
+                          <div class="form-check" style="padding-left: 150px">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="text"
+                              name="entry"
+                            />
+                            <label class="form-check-label" for="text"
+                              >Text Entry</label
+                            >
+                          </div>
 
-                        <div class="form-check" style="padding-left: 150px">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="website-url"
-                            name="entry"
-                          />
-                          <label class="form-check-label" for="text"
-                            >Website URL</label
-                          >
-                        </div>
+                          <div class="form-check" style="padding-left: 150px">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="website-url"
+                              name="entry"
+                            />
+                            <label class="form-check-label" for="text"
+                              >Website URL</label
+                            >
+                          </div>
 
-                        <div class="form-check" style="padding-left: 150px">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="media-recordings"
-                            name="entry"
-                          />
-                          <label class="form-check-label" for="text"
-                            >Media Recording</label
-                          >
-                        </div>
+                          <div class="form-check" style="padding-left: 150px">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="media-recordings"
+                              name="entry"
+                            />
+                            <label class="form-check-label" for="text"
+                              >Media Recording</label
+                            >
+                          </div>
 
-                        <div class="form-check" style="padding-left: 150px">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="student-annotation"
-                            name="entry"
-                          />
-                          <label class="form-check-label" for="text"
-                            >Student Annotation</label
-                          >
-                        </div>
+                          <div class="form-check" style="padding-left: 150px">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="student-annotation"
+                              name="entry"
+                            />
+                            <label class="form-check-label" for="text"
+                              >Student Annotation</label
+                            >
+                          </div>
 
-                        <div class="form-check" style="padding-left: 150px">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="file-upload"
-                            name="entry"
-                          />
-                          <label class="form-check-label" for="text"
-                            >File Upload</label
-                          >
-                        </div>
-                      </fieldset>
+                          <div class="form-check" style="padding-left: 150px">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="file-upload"
+                              name="entry"
+                            />
+                            <label class="form-check-label" for="text"
+                              >File Upload</label
+                            >
+                          </div>
+                        </fieldset>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <br />
-                <div style="padding-left: 150px">
-                  <div class="row w-50">
-                    <div class="col">Assignment</div>
+
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col text-end w-20">Assignment</div>
                     <div class="col">
-                      <div class="wd-assign-edit-form border w-100">
-                        <div class="m-2">
-                          <div class="me-auto">
+                      <div class="border w-50">
+                        <div class="p-2">
+                          <div class="pb-3">
                             <label class="form-label" for="assign-to"
-                              >Assign To</label
+                              ><b>Assign To</b></label
                             >
-                            <br />
                             <input
                               class="form-control"
                               type="text"
@@ -328,24 +331,28 @@
                               id="assign-to"
                               value="Everyone"
                             />
+                          </div>
 
-                            <div>
-                              <label class="form-label" for="due">Due</label>
-                              <br />
-                              <input class="form-control" type="date" />
-                            </div>
+                          <div class="pb-3">
+                            <label class="form-label" for="due"
+                              ><b>Due</b></label
+                            >
 
-                            <div>
+                            <input class="form-control" type="date" />
+                          </div>
+
+                          <div class="row">
+                            <div class="col w-50">
                               <label class="form-label" for="available-from"
-                                >Available From</label
+                                ><b>Available From</b></label
                               >
                               <br />
                               <input class="form-control" type="date" />
                             </div>
 
-                            <div>
+                            <div class="col w-50">
                               <label class="form-label" for="until"
-                                >Until</label
+                                ><b>Until</b></label
                               >
                               <br />
                               <input class="form-control" type="date" />

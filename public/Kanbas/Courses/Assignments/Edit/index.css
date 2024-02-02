@@ -9,7 +9,7 @@
 .wd-assign-edit-form{
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
+  gap: 10px;
   max-width: 500px;
-  width: 100px;
+  /* width: 100px; */
 }
