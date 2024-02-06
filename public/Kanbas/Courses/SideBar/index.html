@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SideBar</title>
+    <link rel="stylesheet" href="../../../styles.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="wd-page-wrapper">
+      <!-- Navigation Sidebar-->
+      <div class="container-block">
+        <!-- x -->
+        <div class="row">
+          <div class="d-flex justify-content-end">
+            <button
+              class="wd-xmark"
+              onclick="window.location.href='../Home/screen.html'"
+            >
+              <i class="fa fa-times fa-2x"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Dashboard -->
+        <ul class="wd-menu">
+          <!-- NEU Icon -->
+          <!-- Dashboard -->
+          <li>
+            <a href="../../Dashboard/screen.html">
+              <div class="d-flex">
+                <i class="fas fa-tachometer-alt fa-3x wd-sidebar-symbols"></i>
+                Dashboard
+              </div>
+            </a>
+          </li>
+          <!-- Account -->
+          <li class="wd-active-item">
+            <a href="../../Account/Profile/screen.html">
+              <div class="d-flex">
+                <i
+                  class="fa fa-user fa-3x wd-sidebar-symbols"
+                  id="wd-account-icon"
+                ></i>
+                Account
+              </div>
+            </a>
+          </li>
+
+          <!-- Courses -->
+          <li>
+            <a href="../Home/screen.html">
+              <div class="d-flex">
+                <i class="fa fa-book fa-3x wd-sidebar-symbols"></i>
+                Courses
+              </div>
+            </a>
+          </li>
+
+          <!-- Calendar -->
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fa fa-calendar fa-3x wd-sidebar-symbols"></i>
+                Calendar
+              </div>
+            </a>
+          </li>
+
+          <!-- Inbox -->
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fa fa-inbox fa-3x wd-sidebar-symbols"></i>
+                Inbox
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fa fa-tv fa-3x wd-sidebar-symbols"></i>
+                Studio
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fas fa-users fa-3x wd-sidebar-symbols"></i>
+                Commons
+              </div>
+            </a>
+          </li>
+          <!-- History -->
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fa fa-clock fa-3x wd-sidebar-symbols"></i>
+                History
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <div class="d-flex">
+                <i class="fa fa-question fa-3x wd-sidebar-symbols"></i>
+                Help
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

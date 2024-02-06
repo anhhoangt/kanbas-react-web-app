@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" href="../../../styles.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="wd-main-wrapper">
+      <div class="container-block">
+        <!-- Top Bar-->
+        <div class="row wd-small-navbar bg-black m-0 p-0">
+          <div class="container-block m-0 p-0">
+            <div class="row m-0 p-0">
+              <!-- Sandwich sidebar-->
+              <div class="col col-2 wd-sandwich-sidebar-button-container">
+                <button
+                  class="wd-sandwich-sidebar-button"
+                  onclick="window.location.href='../SideBar/index.html'"
+                >
+                  <i class="fa fa-bars"></i>
+                </button>
+              </div>
+
+              <!-- Course Name -->
+              <div class="col col-7 wd-small-bar-name-container">
+                <div>
+                  <p>CS5610</p>
+                  <p>Modules</p>
+                </div>
+              </div>
+
+              <!-- Nav bar section-->
+              <div
+                class="col col-3 wd-small-bar-right-side-buttons justify-content-end d-flex"
+              >
+                <div>
+                  <button><i class="fa fa-bars"></i></button>
+                  <button onclick="window.location.href='../Home/screen.html'">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Menu -->
+        <div class="row">
+          <ul class="wd-menu">
+            <li class="wd-home-link">
+              <i class="fa fa-home"></i><a href="../Home/screen.html">Home</a>
+            </li>
+            <li><i class="fa fa-th"></i><a href="#">Modules</a></li>
+            <li><i class="fa fa-plug"></i><a href="#">Piazza</a></li>
+            <li><i class="fa fa-tv"></i><a href="#">Zoom Meetings</a></li>
+            <li>
+              <i class="fa fa-book"></i
+              ><a href="../Assignments/screen.html">Assignments</a>
+            </li>
+            <li><i class="fa fa-pen"></i><a href="#">Quizzes</a></li>
+            <li>
+              <i class="fa fa-graduation-cap"></i
+              ><a href="../Grades/screen.html">Grades</a>
+            </li>
+            <li><i class="fa fa-users"></i><a href="#">People</a></li>
+            <li><i class="fa fa-tv"></i><a href="#">Panopto Video</a></li>
+            <li><i class="fa fa-comment"></i><a href="#">Discussions</a></li>
+            <li><i class="fa fa-bullhorn"></i><a href="#">Announcements</a></li>
+            <li><i class="fa fa-file"></i><a href="#">Pages</a></li>
+            <li><i class="fa fa-files-o"></i><a href="#">Files</a></li>
+            <li><i class="fa fa-list-alt"></i><a href="#">Rubrics</a></li>
+            <li>
+              <i class="fa fa-check-square-o"></i><a href="#">Outcomes</a>
+            </li>
+            <li>
+              <i class="fa fa-handshake-o"></i><a href="#">Collaborations</a>
+            </li>
+            <li><i class="fa fa-file-text-o"></i><a href="#">Syllabus</a></li>
+            <li>
+              <i class="fa fa-gear"></i
+              ><a href="../Settings/CourseDetails/screen.html">Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

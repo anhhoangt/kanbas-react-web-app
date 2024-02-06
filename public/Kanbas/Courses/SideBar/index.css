@@ -1,0 +1,19 @@
+.wd-xmark{
+    border:none;
+    background: none;
+    width:50px;
+    margin:0px;
+    padding:0px;
+}
+
+.wd-xmark i{
+    color:gray;
+}
+
+.wd-menu li{
+    margin-bottom: 30px;
+}
+
+.wd-menu li a div i{
+    margin-right:10px;
+}
