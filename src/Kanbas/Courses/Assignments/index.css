@@ -1,0 +1,89 @@
+.wd-assignments,
+.wd-assignments * {
+  border-radius: 0%;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.wd-assignments {
+  margin: 2px;
+}
+
+.wd-assignments > li {
+  background-color: white;
+  border: 1px solid gray !important;
+  border-left: none !important;
+}
+
+.wd-assignments > li > div {
+  padding: 5px;
+  border-left: 2px solid green !important;
+}
+
+.wd-assignments > li > ul > li {
+  padding: 5px;
+  border-top: 1px solid gray !important;
+
+}
+
+.wd-assignments > li > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+  border-left: none;
+}
+
+.wd-assignments-list-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  
+}
+
+.wd-assignments > li {
+  margin-bottom: 20px;
+}
+
+.wd-assignments-percent-total{
+  border: 0.75px solid black;
+  border-radius: 20px;
+}
+
+ span .grade-portion{
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.wd-assignments-button {
+    margin: 1px;
+    padding: 1px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+  }
+
+  .wd-assignments-button-alert {
+    margin: 1px;
+    padding: 1px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+  }
+
+  .wd-assignments-button:hover {
+    color: white;
+    background-color: black;
+  }
+  
+  .wd-assignments-button-alert:hover {
+    color: red;
+    background-color: white;
+  }
