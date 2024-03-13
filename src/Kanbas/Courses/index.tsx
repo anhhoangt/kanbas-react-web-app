@@ -1,7 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-import { courses } from "../../Kanbas/Database";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { FaGlasses } from "react-icons/fa";
@@ -11,9 +9,14 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
+import { useSelector } from "react-redux";
+import { KanbasState } from "../store/store";
 
 function Courses() {
   const { courseId } = useParams();
+  const courses = useSelector(
+    (state: KanbasState) => state.coursesReducer.courses
+  );
   const course = courses.find((course) => course._id === courseId);
 
   // get the current tab of course ("Home", "Modules", "Piazza", "Grades", "Assignments")
@@ -52,6 +55,7 @@ function Courses() {
             <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
             <Route path="Assignments" element={<Assignments />} />
+            <Route path="Assignments/new" element={<AssignmentEditor />} />
             <Route
               path="Assignments/:assignmentId"
               element={<AssignmentEditor />}

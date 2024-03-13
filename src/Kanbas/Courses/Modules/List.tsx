@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import "./index.css";
-import { modules } from "../../Database";
-import { FaEllipsisV, FaCheckCircle, FaPlusCircle } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import { KanbasState } from "../../store/store";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+} from "../../store/modulesReducer";
+
 function ModuleList() {
   const { courseId } = useParams();
-  const modulesList = modules.filter((module) => module.course === courseId);
-  const [selectedModule, setSelectedModule] = useState(modulesList[0]);
+  const moduleList = useSelector(
+    (state: KanbasState) => state.modulesReducer.modules
+  );
+  const module = useSelector(
+    (state: KanbasState) => state.modulesReducer.module
+  );
+  const dispatch = useDispatch();
+
   return (
     <>
       {/* <!-- Add buttons here --> */}
@@ -25,37 +39,59 @@ function ModuleList() {
           </button>
         </div>
       </div>
-      <ul className="list-group wd-modules">
-        {modulesList.map((module) => (
-          <li
-            className="list-group-item"
-            onClick={() => setSelectedModule(module)}
+      <ul className="list-group">
+        <li className="list-group-item d-flex m-2">
+          <input
+            value={module.name}
+            onChange={(e) =>
+              dispatch(setModule({ ...module, name: e.target.value }))
+            }
+            className="form-control m-1"
+            style={{ maxWidth: "200px" }}
+          />
+          <textarea
+            value={module.description}
+            onChange={(e) =>
+              dispatch(setModule({ ...module, description: e.target.value }))
+            }
+            className="form-control m-1"
+            style={{ maxWidth: "500px" }}
+          />
+          <button
+            onClick={() => dispatch(addModule({ ...module, course: courseId }))}
+            className="btn btn-success m-1"
           >
-            <div>
-              <FaEllipsisV className="me-2" />
-              {module.name}
-              <span className="float-end">
-                <FaCheckCircle className="text-success" />
-                <FaPlusCircle className="ms-2" />
-                <FaEllipsisV className="ms-2" />
-              </span>
-            </div>
-            {selectedModule._id === module._id && (
-              <ul className="list-group">
-                {module.lessons?.map((lesson) => (
-                  <li className="list-group-item">
-                    <FaEllipsisV className="me-2" />
-                    {lesson.name}
-                    <span className="float-end">
-                      <FaCheckCircle className="text-success" />
-                      <FaEllipsisV className="ms-2" />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
+            Add
+          </button>
+          <button
+            onClick={() => dispatch(updateModule(module))}
+            className="btn btn-info m-1"
+          >
+            Update
+          </button>
+        </li>
+        <div>
+          {moduleList
+            .filter((module: any) => module.course === courseId)
+            .map((module: any, index: any) => (
+              <li key={index} className="list-group-item">
+                <button
+                  onClick={() => dispatch(setModule(module))}
+                  className="btn btn-primary m-1"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => dispatch(deleteModule(module._id))}
+                  className="btn btn-danger m-1"
+                >
+                  Delete
+                </button>
+                <h3>{module.name}</h3>
+                <p>{module.description}</p>
+              </li>
+            ))}
+        </div>
       </ul>
     </>
   );
