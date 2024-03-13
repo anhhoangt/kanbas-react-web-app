@@ -10,7 +10,6 @@ import {
   updateAssignment,
   selectAssignment,
 } from "../../../store/assignmentsReducer";
-import { Assignment } from "../../../store/assignmentsReducer"; // Import the 'Assignment' type from the appropriate module
 function AssignmentEditor() {
   const { courseId, assignmentId } = useParams();
   // const { assignmentId } = useParams();
@@ -176,12 +175,7 @@ function AssignmentEditor() {
       <button
         onClick={() => {
           if (assignmentId === "new") {
-            dispatch(
-              addAssignment({
-                ...assignment,
-                course: courseId || "",
-              } as Assignment)
-            );
+            dispatch(addAssignment({ ...assignment, course: courseId }));
           } else {
             dispatch(updateAssignment({ ...assignment, course: courseId }));
           }

@@ -2,17 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { db } from "../Database";
 import { KanbasState } from "./store";
 
-interface Assignment {
-  _id: string;
-  title: string;
-  description: string;
-  point: number;
-  dueDate: string;
-  availableFromDate: string;
-  availableUntilDate: string;
-  course: string;
-}
-
 const initialState = {
   assignments: db.assignments,
   assignment: {
@@ -30,8 +19,11 @@ const assignmentsSlice = createSlice({
   name: "assignments",
   initialState,
   reducers: {
-    addAssignment(state, action: PayloadAction<Assignment>) {
-      state.assignments = [action.payload, ...state.assignments];
+    addAssignment(state, action) {
+      state.assignments = [
+        { ...action.payload, _id: new Date().getTime().toString() },
+        ...state.assignments,
+      ];
     },
     deleteAssignment(state, action) {
       state.assignments = state.assignments.filter(
@@ -59,5 +51,3 @@ export const {
   selectAssignment,
 } = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
-//export interface Assignment
-export type { Assignment };
