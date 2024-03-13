@@ -175,9 +175,9 @@ function AssignmentEditor() {
       <button
         onClick={() => {
           if (assignmentId === "new") {
-            dispatch(addAssignment({ ...assignment, course: courseId }));
+            dispatch(addAssignment({ ...assignment }));
           } else {
-            dispatch(updateAssignment({ ...assignment, course: courseId }));
+            dispatch(updateAssignment(assignment));
           }
           navigate(`/Kanbas/Courses/${courseId}/Assignments`);
         }}
