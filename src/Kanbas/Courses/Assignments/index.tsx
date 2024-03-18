@@ -22,7 +22,7 @@ function Assignments() {
   const assignment = useSelector(
     (state: KanbasState) => state.assignmentsReducer.assignment
   );
-
+  console.log(assignmentList);
   const dispatch = useDispatch();
   return (
     <>
@@ -45,12 +45,6 @@ function Assignments() {
                 <Link to={`/Kanbas/Courses/${courseId}/Assignments/new`}>
                   <HiPlus /> Assignment
                 </Link>
-                {/* <Link
-                  to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                >
-                  <HiPlus /> Assignment
-                </Link> */}
-                {/* <HiPlus /> Assignment */}
               </button>
               <button className="wd-assignments-button ">
                 <BsThreeDotsVertical />
@@ -87,6 +81,7 @@ function Assignments() {
                     <FaEllipsisV className="me-2" />
                     <Link
                       to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
+                      onClick={() => dispatch(selectAssignment(assignment))}
                     >
                       {assignment.title}
                     </Link>

@@ -12,17 +12,11 @@ import {
 } from "../../../store/assignmentsReducer";
 function AssignmentEditor() {
   const { courseId, assignmentId } = useParams();
-  // const { assignmentId } = useParams();
-
-  // const assignment = useSelector(
-  //   (state: KanbasState) => state.assignmentsReducer.assignment
-  // );
-  // get the variable assignment from KanbasState where assignment.course === courseId and assignment._id === assignmentId
-  const assignment = useSelector((state: KanbasState) =>
-    state.assignmentsReducer.assignments.find(
-      (assignment) =>
-        assignment.course === courseId && assignment._id === assignmentId
-    )
+  const assignmentList = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignments
+  );
+  const assignment = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignment
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -174,8 +168,8 @@ function AssignmentEditor() {
 
       <button
         onClick={() => {
-          if (assignmentId === "new") {
-            dispatch(addAssignment({ ...assignment }));
+          if (!assignmentId) {
+            dispatch(addAssignment({ ...assignment, course: courseId }));
           } else {
             dispatch(updateAssignment(assignment));
           }
