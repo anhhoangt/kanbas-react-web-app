@@ -2,6 +2,19 @@ import { configureStore } from "@reduxjs/toolkit";
 import modulesReducer from "./modulesReducer";
 import coursesReducer from "./coursesReducer";
 import assignmentsReducer from "./assignmentsReducer";
+import quizzesReducer from "./quizzesReducer";
+
+export type QuizzType = {
+  _id: string;
+  title: string;
+  isPublished: boolean;
+  availableDate: string;
+  availableUntilDate: string;
+  dueDate: string;
+  points: number;
+  numberOfQuestions: number;
+  course: string;
+};
 
 export type CourseType = {
   _id: string;
@@ -36,12 +49,17 @@ export interface KanbasState {
     assignments: assignmentType[];
     assignment: assignmentType | null;
   };
+  quizzesReducer: {
+    quizzes: QuizzType[];
+    quiz: QuizzType;
+  };
 }
 const store = configureStore({
   reducer: {
     modulesReducer,
     coursesReducer,
     assignmentsReducer,
+    quizzesReducer,
   },
 });
 

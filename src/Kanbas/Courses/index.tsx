@@ -6,6 +6,8 @@ import { FaGlasses } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
+import Quizzes from "./Quizzes";
+import QuizDetails from "./Quizzes/QuizDetails";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
@@ -54,13 +56,15 @@ function Courses() {
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
+            <Route path="Quizzes" element={<Quizzes />} />
             <Route path="Assignments" element={<Assignments />} />
-
             <Route
               path="Assignments/:assignmentId"
               element={<AssignmentEditor />}
             />
             <Route path="Assignments/new" element={<AssignmentEditor />} />
+            <Route path="Quizzes/:quizId" element={<QuizDetails />} />
+            <Route path="Quizzes/new" element={<QuizDetails />} />
             <Route path="Grades" element={<Grades />} />
           </Routes>
         </div>
