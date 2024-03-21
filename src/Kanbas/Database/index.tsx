@@ -4,4 +4,13 @@ import assignments from "./assignments.json";
 import users from "./users.json";
 import enrollments from "./enrollments.json";
 import grades from "./grades.json";
-export const db = { courses, modules, assignments, users, enrollments, grades };
+import quizzes from "./quizzes.json";
+export const db = {
+  courses,
+  modules,
+  assignments,
+  users,
+  enrollments,
+  grades,
+  quizzes,
+};
