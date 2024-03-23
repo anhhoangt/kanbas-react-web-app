@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Nav from "../../../../../kanbas-quiz-project/kanbas-quiz-project/src/Nav";
+import Nav from "../../Nav";
 
 function HelloWorld() {
   return (

@@ -1,7 +1,7 @@
 import store from "./store";
 import { Provider } from "react-redux";
 
-import Nav from "../../../../kanbas-quiz-project/kanbas-quiz-project/src/Nav";
+import Nav from "../Nav";
 import Assignment3 from "./a3";
 import Assignment4 from "./a4";
 import Assignment5 from "./a5";

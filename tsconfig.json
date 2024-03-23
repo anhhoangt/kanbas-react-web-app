@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "../../kanbas-quiz-project/kanbas-quiz-project/src/Nav.tsx"  ]
+  ]
 }
