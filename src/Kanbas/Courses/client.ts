@@ -1,7 +1,8 @@
 import axios from "axios";
-const API_BASE = process.env.REACT_APP_API_BASE;
-// const COURSES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/courses";
-const COURSES_API = `${API_BASE}/api/courses`;
+
+const COURSES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/courses";
+// const API_BASE = process.env.REACT_APP_API_BASE;
+// const COURSES_API = `${API_BASE}/api/courses`;
 export const fetchAllCourses = async () => {
     const response = await axios.get(`${COURSES_API}`);
     return response.data;
