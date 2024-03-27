@@ -1,20 +1,61 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import * as courseClient from "../Courses/client";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addNewCourse,
-  deleteCourse,
-  updateCourse,
-  setCourse,
-} from "../store/coursesReducer";
-import { KanbasState } from "../store/store";
+// import {
+//   addNewCourse,
+//   deleteCourse,
+//   updateCourse,
+//   setCourse,
+// } from "../store/coursesReducer";
+// import { KanbasState } from "../store/store";
 
 function Dashboard() {
-  const courses = useSelector(
-    (state: KanbasState) => state.coursesReducer.courses
-  );
-  const course = useSelector(
-    (state: KanbasState) => state.coursesReducer.course
-  );
+  const [course, setCourse] = useState({
+    name: " ",
+    number: " ",
+    startDate: " ",
+    endDate: " ",
+  });
+  const [courses, setCourses] = useState<any[]>([]);
+  const fetchAllCourses = async () => {
+    const courses = await courseClient.fetchAllCourses();
+    setCourses(courses);
+  };
+
+  const addNewCourse = async () => {
+    const courses = await courseClient.createCourse(course);
+    setCourses(courses);
+  };
+
+  const deleteCourse = async (courseId: string) => {
+    try {
+      await courseClient.deleteCourse(courseId);
+      setCourses(courses.filter((course: any) => course._id !== courseId));
+    } catch (err) {
+      console.log("Error deleting the course", err);
+    }
+  };
+
+  const updateCourse = async (course: any) => {
+    const updatedCourse = await courseClient.updateCourse(course);
+    setCourses(
+      courses.map((course: any) =>
+        course._id === updatedCourse._id ? updatedCourse : course
+      )
+    );
+  };
+  useEffect(() => {
+    fetchAllCourses();
+  }, []);
+
+  // const courses = useSelector(
+  //   (state: KanbasState) => state.coursesReducer.courses
+  // );
+  // const course = useSelector(
+  //   (state: KanbasState) => state.coursesReducer.course
+  // );
   const dispatch = useDispatch();
   return (
     <div className="p-4">
@@ -27,7 +68,8 @@ function Dashboard() {
             className="form-control m-1"
             style={{ maxWidth: "200px", flexGrow: 1 }}
             onChange={(e) =>
-              dispatch(setCourse({ ...course, name: e.target.value }))
+              // dispatch(setCourse({ ...course, name: e.target.value }))
+              setCourse({ ...course, name: e.target.value })
             }
           />
           <input
@@ -35,7 +77,8 @@ function Dashboard() {
             className="form-control m-1"
             style={{ maxWidth: "200px", flexGrow: 1 }}
             onChange={(e) =>
-              dispatch(setCourse({ ...course, number: e.target.value }))
+              // dispatch(setCourse({ ...course, number: e.target.value }))
+              setCourse({ ...course, number: e.target.value })
             }
           />
           <input
@@ -44,7 +87,8 @@ function Dashboard() {
             style={{ maxWidth: "200px", flexGrow: 1 }}
             type="date"
             onChange={(e) =>
-              dispatch(setCourse({ ...course, startDate: e.target.value }))
+              // dispatch(setCourse({ ...course, startDate: e.target.value }))
+              setCourse({ ...course, startDate: e.target.value })
             }
           />
           <input
@@ -53,18 +97,21 @@ function Dashboard() {
             style={{ maxWidth: "200px", flexGrow: 1 }}
             type="date"
             onChange={(e) =>
-              dispatch(setCourse({ ...course, endDate: e.target.value }))
+              // dispatch(setCourse({ ...course, endDate: e.target.value }))
+              setCourse({ ...course, endDate: e.target.value })
             }
           />
         </div>
         <button
-          onClick={() => dispatch(addNewCourse({ ...course }))}
+          // onClick={() => dispatch(addNewCourse({ ...course }))}
+          onClick={() => addNewCourse()}
           className="btn btn-success m-1"
         >
           Add
         </button>
         <button
-          onClick={() => dispatch(updateCourse(course))}
+          // onClick={() => dispatch(updateCourse(course))}
+          onClick={() => updateCourse(course)}
           className="btn btn-info m-1"
         >
           Update
@@ -73,7 +120,7 @@ function Dashboard() {
       <h2>Published Courses ({courses.length})</h2> <hr />
       <div className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
-          {courses.map((course) => (
+          {courses.map((course: any) => (
             <div key={course._id} className="col" style={{ width: 300 }}>
               <div className="card">
                 <img
@@ -96,7 +143,8 @@ function Dashboard() {
                     <button
                       onClick={(event) => {
                         event.preventDefault();
-                        dispatch(deleteCourse(course._id));
+                        // dispatch(deleteCourse(course._id));
+                        deleteCourse(course._id);
                       }}
                       className="btn btn-danger m-1"
                     >
@@ -105,7 +153,8 @@ function Dashboard() {
                     <button
                       onClick={(event) => {
                         event.preventDefault();
-                        dispatch(setCourse(course));
+                        // dispatch(setCourse(course));
+                        setCourse(course);
                       }}
                       className="btn btn-primary m-1"
                     >

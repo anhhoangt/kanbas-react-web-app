@@ -25,16 +25,16 @@ export type CourseType = {
   image: string;
 };
 
-export type assignmentType = {
-  _id?: string;
-  title: string;
-  description: string;
-  point: number;
-  dueDate: string;
-  availableFromDate: string;
-  availableUntilDate: string;
-  course: string;
-};
+// export type assignmentType = {
+//   _id?: string;
+//   title: string;
+//   description: string;
+//   point: number;
+//   dueDate: string;
+//   availableFromDate: string;
+//   availableUntilDate: string;
+//   course: string;
+// };
 
 export interface KanbasState {
   modulesReducer: {
@@ -46,8 +46,8 @@ export interface KanbasState {
     course: CourseType;
   };
   assignmentsReducer: {
-    assignments: assignmentType[];
-    assignment: assignmentType | null;
+    assignments: any[];
+    assignment: any | null;
   };
   quizzesReducer: {
     quizzes: QuizzType[];
