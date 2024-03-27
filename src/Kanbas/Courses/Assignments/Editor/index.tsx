@@ -1,6 +1,4 @@
-import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { db } from "../../../Database";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../../../store/store";
@@ -10,6 +8,7 @@ import {
   updateAssignment,
   selectAssignment,
 } from "../../../store/assignmentsReducer";
+import * as client from "../client";
 function AssignmentEditor() {
   const { courseId, assignmentId } = useParams();
   const assignmentList = useSelector(
@@ -20,6 +19,18 @@ function AssignmentEditor() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleAddAssignment = () => {
+    client.createAssignment(courseId, assignment).then((assignment) => {
+      dispatch(addAssignment(assignment));
+    });
+  };
+
+  const handleUpdateAssignment = async () => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
   return (
     <div>
       <h2>Assignment Name</h2>
@@ -169,9 +180,11 @@ function AssignmentEditor() {
       <button
         onClick={() => {
           if (!assignmentId) {
-            dispatch(addAssignment({ ...assignment, course: courseId }));
+            // dispatch(addAssignment({ ...assignment, course: courseId }));
+            handleAddAssignment();
           } else {
-            dispatch(updateAssignment(assignment));
+            // dispatch(updateAssignment(assignment));
+            handleUpdateAssignment();
           }
           navigate(`/Kanbas/Courses/${courseId}/Assignments`);
         }}

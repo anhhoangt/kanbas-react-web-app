@@ -1,9 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { db } from "../Database";
-import { KanbasState } from "./store";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  assignments: db.assignments,
+  assignments: <any[]>[],
   assignment: {
     _id: "0",
     title: "New Assignment",
@@ -20,10 +18,7 @@ const assignmentsSlice = createSlice({
   initialState,
   reducers: {
     addAssignment(state, action) {
-      state.assignments = [
-        { ...action.payload, _id: new Date().getTime().toString() },
-        ...state.assignments,
-      ];
+      state.assignments = [action.payload, ...state.assignments];
     },
     deleteAssignment(state, action) {
       state.assignments = state.assignments.filter(
@@ -42,6 +37,10 @@ const assignmentsSlice = createSlice({
     selectAssignment(state, action) {
       state.assignment = action.payload;
     },
+    setAssignments: (state, action) =>{
+      state.assignments = action.payload;
+    
+    },
   },
 });
 export const {
@@ -49,5 +48,6 @@ export const {
   deleteAssignment,
   updateAssignment,
   selectAssignment,
+  setAssignments,
 } = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;

@@ -27,8 +27,13 @@ function WorkingWithArrays() {
     setTodos(response.data);
   };
   const deleteTodo = async (todo: Todo) => {
-    const response = await axios.delete(`${API}/${todo.id}`);
-    setTodos(todos.filter((t) => t.id !== todo.id));
+    try {
+      const response = await axios.delete(`${API}/${todo.id}`);
+      setTodos(todos.filter((t) => t.id !== todo.id));
+    } catch (error: any) {
+      console.log(error);
+      setErrorMessage(error.response.data.message);
+    }
   };
 
   const createTodo = async () => {
@@ -49,8 +54,9 @@ function WorkingWithArrays() {
       const response = await axios.put(`${API}/${todo.id}`, todo);
       console.log(response.data);
       setTodos(todos.map((t) => (t.id === todo.id ? todo : t)));
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.log(error);
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -203,6 +209,9 @@ function WorkingWithArrays() {
       <br />
       <button onClick={postTodo}> Post Todo </button>
       <hr />
+      {errorMessage && (
+        <div className="alert alert-danger mb-2 mt-2">{errorMessage}</div>
+      )}
       <ul>
         {todos.map((todo: Todo) => (
           <li key={todo.id}>

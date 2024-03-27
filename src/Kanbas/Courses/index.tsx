@@ -13,13 +13,23 @@ import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 import { useSelector } from "react-redux";
 import { KanbasState } from "../store/store";
+import * as courseClient from "./client";
 
 function Courses() {
   const { courseId } = useParams();
-  const courses = useSelector(
-    (state: KanbasState) => state.coursesReducer.courses
-  );
-  const course = courses.find((course) => course._id === courseId);
+  const [course, setCourse] = useState({ name: "" });
+  // const courses = useSelector(
+  //   (state: KanbasState) => state.coursesReducer.courses
+  // );
+  // const course = courses.find((course) => course._id === courseId);
+  const fetchCourse = async () => {
+    const course = await courseClient.findCourseById(courseId);
+    setCourse(course);
+  };
+
+  useEffect(() => {
+    fetchCourse();
+  }, [courseId]);
 
   // get the current tab of course ("Home", "Modules", "Piazza", "Grades", "Assignments")
   const location = useLocation();
