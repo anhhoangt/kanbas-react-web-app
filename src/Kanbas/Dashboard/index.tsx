@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as courseClient from "../Courses/client";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,9 +24,17 @@ function Dashboard() {
     setCourses(courses);
   };
 
+  // const addNewCourse = async () => {
+  //   const courses = await courseClient.createCourse(course);
+  //   setCourses(courses);
+  // };
   const addNewCourse = async () => {
-    const courses = await courseClient.createCourse(course);
-    setCourses(courses);
+    const newCourse = await courseClient.createCourse(course);
+    if (Array.isArray(newCourse)) {
+      setCourses(newCourse);
+    } else {
+      setCourses([...courses, newCourse]);
+    }
   };
 
   const deleteCourse = async (courseId: string) => {

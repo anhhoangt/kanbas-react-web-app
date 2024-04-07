@@ -3,14 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   assignments: <any[]>[],
   assignment: {
-    _id: "0",
     title: "New Assignment",
     description: "New Description",
     point: 100,
     dueDate: "2023-09-10",
     availableFromDate: "2023-12-15",
     availableUntilDate: "2024-02-15",
-    course: "0",
   },
 };
 const assignmentsSlice = createSlice({

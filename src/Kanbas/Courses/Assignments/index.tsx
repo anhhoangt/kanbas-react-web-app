@@ -8,12 +8,11 @@ import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../../store/store";
 import {
-  addAssignment,
   deleteAssignment,
-  updateAssignment,
   selectAssignment,
   setAssignments,
 } from "../../store/assignmentsReducer";
+import Editor from "./Editor";
 
 function Assignments() {
   const { courseId } = useParams();
@@ -32,10 +31,16 @@ function Assignments() {
     });
   };
 
+  const fetchAssignments = () => {
+    client.findAssignmentsForCourse(courseId);
+    // .then((assignments) => {
+    //   dispatch(setAssignments(assignments));
+    // });
+    dispatch(setAssignments(assignmentList));
+  };
+
   useEffect(() => {
-    client.findAssignmentsForCourse(courseId).then((assignments) => {
-      dispatch(setAssignments(assignments));
-    });
+    fetchAssignments();
   }, [courseId]);
   return (
     <>
@@ -89,8 +94,8 @@ function Assignments() {
             <ul className="list-group">
               {assignmentList
                 .filter((assignment) => assignment.course === courseId)
-                .map((assignment) => (
-                  <li className="list-group-item">
+                .map((assignment: any, index: any) => (
+                  <li key={index} className="list-group-item">
                     <FaEllipsisV className="me-2" />
                     <Link
                       to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
@@ -122,6 +127,7 @@ function Assignments() {
           </li>
         </ul>
       </div>
+      {/* <Editor onAddOrUpdateAssignment={fetchAssignments} /> */}
     </>
   );
 }
