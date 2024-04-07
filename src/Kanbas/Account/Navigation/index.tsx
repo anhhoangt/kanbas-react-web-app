@@ -1,15 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
-import "./index.css"; // feel free to use the CSS from previous assignments
-function CourseNavigation() {
-  const links = [
-    "Home",
-    "Modules",
-    "Piazza",
-    "Grades",
-    "Quizzes",
-    "Assignments",
-  ];
+import "./index.css";
+
+function AccountNavigation() {
+  const links = ["Profile", "Settings", "Notifications", "Files"];
   const { pathname } = useLocation();
   return (
     <ul className="wd-navigation">
@@ -21,4 +15,5 @@ function CourseNavigation() {
     </ul>
   );
 }
-export default CourseNavigation;
+
+export default AccountNavigation;

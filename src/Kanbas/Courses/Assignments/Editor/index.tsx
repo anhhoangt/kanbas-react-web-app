@@ -1,16 +1,16 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../../../store/store";
 import {
   addAssignment,
-  deleteAssignment,
+  setAssignments,
   updateAssignment,
   selectAssignment,
 } from "../../../store/assignmentsReducer";
 import * as client from "../client";
-function AssignmentEditor() {
+function AssignmentEditor(props: any) {
   const { courseId, assignmentId } = useParams();
   const assignmentList = useSelector(
     (state: KanbasState) => state.assignmentsReducer.assignments
@@ -25,11 +25,16 @@ function AssignmentEditor() {
     client.createAssignment(courseId, assignment).then((assignment) => {
       dispatch(addAssignment(assignment));
     });
+    console.log("Assignment added", assignment);
+    // props.onAddOrUpdateAssignment();
   };
 
   const handleUpdateAssignment = async () => {
     const status = await client.updateAssignment(assignment);
     dispatch(updateAssignment(assignment));
+    // if (typeof props.onAddOrUpdateAssignment === "function") {
+    //   props.onAddOrUpdateAssignment();
+    // }
   };
 
   return (

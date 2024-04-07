@@ -1,9 +1,8 @@
 import axios from "axios";
-// const COURSES_API = "http://localhost:4000/api/courses";
+
 const COURSES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/courses";
-// const ASSIGNMENTS_API = "http://localhost:4000/api/assignments";
 const ASSIGNMENTS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/assignments";
-// const API_BASE = process.env.REACT_APP_API_BASE;
+// const API_BASE = "http://localhost:4000";
 // const COURSES_API = `${API_BASE}/api/courses`;
 // const ASSIGNMENTS_API = `${API_BASE}/api/assignments`;
 
