@@ -10,10 +10,16 @@ import Quizzes from "./Quizzes";
 import QuizDetails from "./Quizzes/QuizDetails";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
+import QuizDetailsEditor from "./Quizzes/QuizDetailsEditor";
+import QuizQuestionsEditor from "./Quizzes/QuizQuestionsEditor";
+import QuizPreview from "./Quizzes/QuizQuestionsEditor/QuizPreview";
 import Grades from "./Grades";
 import { useSelector } from "react-redux";
 import { KanbasState } from "../store/store";
 import * as courseClient from "./client";
+import MultipleChoiceEditor from "./Quizzes/QuizQuestionsEditor/MultipleChoiceEditor";
+import TrueFalseEditor from "./Quizzes/QuizQuestionsEditor/TrueFalseEditor";
+import FillInBlanksEditor from "./Quizzes/QuizQuestionsEditor/FillInBlankEditor";
 
 function Courses() {
   const { courseId } = useParams();
@@ -73,8 +79,30 @@ function Courses() {
               element={<AssignmentEditor />}
             />
             <Route path="Assignments/new" element={<AssignmentEditor />} />
+
+            <Route
+              path="Quizzes/:quizId/edit-questions/Questions/multiple"
+              element={<MultipleChoiceEditor />}
+            />
+            <Route
+              path="Quizzes/:quizId/edit-questions/Questions/truefalse"
+              element={<TrueFalseEditor />}
+            />
+            <Route
+              path="Quizzes/:quizId/edit-questions/Questions/fillblank"
+              element={<FillInBlanksEditor />}
+            />
+            <Route
+              path="Quizzes/:quizId/edit-details"
+              element={<QuizDetailsEditor />}
+            />
+            <Route
+              path="Quizzes/:quizId/edit-questions"
+              element={<QuizQuestionsEditor />}
+            />
+            <Route path="Quizzes/:quizId/preview" element={<QuizPreview />} />
             <Route path="Quizzes/:quizId" element={<QuizDetails />} />
-            <Route path="Quizzes/new" element={<QuizDetails />} />
+
             <Route path="Grades" element={<Grades />} />
           </Routes>
         </div>
