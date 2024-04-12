@@ -4,18 +4,6 @@ import coursesReducer from "./coursesReducer";
 import assignmentsReducer from "./assignmentsReducer";
 import quizzesReducer from "./quizzesReducer";
 
-export type QuizzType = {
-  _id: string;
-  title: string;
-  isPublished: boolean;
-  availableDate: string;
-  availableUntilDate: string;
-  dueDate: string;
-  points: number;
-  numberOfQuestions: number;
-  course: string;
-};
-
 export type CourseType = {
   _id: string;
   name: string;
@@ -24,17 +12,6 @@ export type CourseType = {
   endDate: string;
   image: string;
 };
-
-// export type assignmentType = {
-//   _id?: string;
-//   title: string;
-//   description: string;
-//   point: number;
-//   dueDate: string;
-//   availableFromDate: string;
-//   availableUntilDate: string;
-//   course: string;
-// };
 
 export interface KanbasState {
   modulesReducer: {
@@ -50,8 +27,8 @@ export interface KanbasState {
     assignment: any | null;
   };
   quizzesReducer: {
-    quizzes: QuizzType[];
-    quiz: QuizzType;
+    quizzes: any[];
+    quiz: any | null;
   };
 }
 const store = configureStore({

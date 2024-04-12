@@ -32,11 +32,10 @@ function Assignments() {
   };
 
   const fetchAssignments = () => {
-    client.findAssignmentsForCourse(courseId);
-    // .then((assignments) => {
-    //   dispatch(setAssignments(assignments));
-    // });
-    dispatch(setAssignments(assignmentList));
+    client.findAssignmentsForCourse(courseId).then((assignments) => {
+      dispatch(setAssignments(assignments));
+    });
+    // dispatch(setAssignments(assignmentList));
   };
 
   useEffect(() => {
