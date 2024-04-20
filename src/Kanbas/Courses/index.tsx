@@ -81,15 +81,15 @@ function Courses() {
             <Route path="Assignments/new" element={<AssignmentEditor />} />
 
             <Route
-              path="Quizzes/:quizId/edit-questions/Questions/multiple"
+              path="Quizzes/:quizId/edit-questions/Questions/multiple/:questionId"
               element={<MultipleChoiceEditor />}
             />
             <Route
-              path="Quizzes/:quizId/edit-questions/Questions/truefalse"
+              path="Quizzes/:quizId/edit-questions/Questions/truefalse/:questionId"
               element={<TrueFalseEditor />}
             />
             <Route
-              path="Quizzes/:quizId/edit-questions/Questions/fillblank"
+              path="Quizzes/:quizId/edit-questions/Questions/fillblank/:questionId"
               element={<FillInBlanksEditor />}
             />
             <Route

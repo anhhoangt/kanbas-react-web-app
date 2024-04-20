@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const COURSES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/courses";
-const MODULES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/modules";
-// const API_BASE = "http://localhost:4000"; //process.env.REACT_APP_API_BASE;
-// const COURSES_API = `${API_BASE}/api/courses`;
-// const MODULES_API = `${API_BASE}/api/modules`;
+// const COURSES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/courses";
+// const MODULES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/modules";
+const API_BASE = "http://localhost:4000"; //process.env.REACT_APP_API_BASE;
+const COURSES_API = `${API_BASE}/api/courses`;
+const MODULES_API = `${API_BASE}/api/modules`;
 
 export const fetchAllModules = async () => {
   const response = await axios.get(`${MODULES_API}`);
