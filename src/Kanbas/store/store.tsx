@@ -3,6 +3,8 @@ import modulesReducer from "./modulesReducer";
 import coursesReducer from "./coursesReducer";
 import assignmentsReducer from "./assignmentsReducer";
 import quizzesReducer from "./quizzesReducer";
+import questionsReducer from "./questionsReducer";
+import answersReducer from "./answersReducer";
 
 export type CourseType = {
   _id: string;
@@ -30,6 +32,14 @@ export interface KanbasState {
     quizzes: any[];
     quiz: any | null;
   };
+  questionsReducer: {
+    questions: any[];
+    question: any | null;
+  };
+  answersReducer: {
+    answers: any[];
+    answer: any | null;
+  };
 }
 const store = configureStore({
   reducer: {
@@ -37,6 +47,8 @@ const store = configureStore({
     coursesReducer,
     assignmentsReducer,
     quizzesReducer,
+    questionsReducer,
+    answersReducer,
   },
 });
 

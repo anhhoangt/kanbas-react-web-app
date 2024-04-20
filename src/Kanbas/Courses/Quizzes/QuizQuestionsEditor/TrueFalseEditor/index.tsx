@@ -1,20 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// import TrueFalseEditor from "../TrueFalseEditor";
 import FillInBlanksEditor from "../FillInBlankEditor";
-import MultipleChoiceEditor from "../MultipleChoiceEditor";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { KanbasState } from "../../../../store/store";
+import { useDispatch } from "react-redux";
+import {
+  setAnswer,
+  setAnswers,
+  addAnswer,
+  updateAnswer,
+  deleteAnswer,
+} from "../../../../store/answersReducer";
+import {
+  setQuestion,
+  updateQuestion,
+} from "../../../../store/questionsReducer";
+import * as answersClient from "../answerClient";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import * as questionsClient from "../client";
 
 const TrueFalseEditor = () => {
-  // const [title, setTitle] = useState("");
-  // const [points, setPoints] = useState(0);
-  // const [question, setQuestion] = useState("");
-  // const [correctAnswer, setCorrectAnswer] = useState(false);
-  const [questionType, setQuestionType] = useState("");
+  const { courseId, quizId, questionId } = useParams();
+  const question = useSelector(
+    (state: KanbasState) => state.questionsReducer.question
+  );
+  const answer = useSelector(
+    (state: KanbasState) => state.answersReducer.answer
+  );
+  const answerList = useSelector(
+    (state: KanbasState) => state.answersReducer.answers
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSave = () => {
-    // Save the question
+  const handleUpdateQuestion = async () => {
+    const status = await questionsClient.updateQuestion(question);
+    dispatch(updateQuestion(question));
   };
 
-  const handleCancel = () => {
-    // Discard changes
+  const handleUpdateQuestionAndUpdateAnswer = async () => {
+    // const status = await answersClient.updateAnswer(answer);
+    // dispatch(updateAnswer(answer));
+    handleUpdateQuestion();
   };
 
   return (
@@ -24,24 +53,57 @@ const TrueFalseEditor = () => {
           <input
             type="text"
             placeholder="Question Title"
-            value="Question Title"
+            value={question.title}
+            onChange={(e) =>
+              dispatch(setQuestion({ ...question, title: e.target.value }))
+            }
             style={{ flex: 1 }}
             className="form-control w-50"
           />
-          <select
-            value={questionType}
-            onChange={(e) => setQuestionType(e.target.value)}
-            style={{ flex: 1 }}
-            className="form-select w-25"
-          >
-            <option value="true/false">True/False</option>
-            <option value="multiple choice">Multiple Choice</option>
-            <option value="fill in blank">Fill in Blank</option>
-          </select>
-          {/* {questionType === "multiple choice" && <MultipleChoiceEditor />}
-          {questionType === "fill in blank" && <FillInBlanksEditor />} */}
+
           <div className="float-end" style={{ flex: 1 }}>
-            pts: <input type="number" value="1" />
+            pts:{" "}
+            <input
+              type="number"
+              value={question.points}
+              onChange={(e) =>
+                dispatch(setQuestion({ ...question, points: e.target.value }))
+              }
+            />
+          </div>
+          <div className="col mb-5">
+            <ul className="nav nav-tabs">
+              <li className="nav-item">
+                <NavLink
+                  to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/multiple/${questionId}`}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  Multiple Choice
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/truefalse/${questionId}`}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  True/False
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/fillblank/${questionId}`}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  Fill In The Blank
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </div>
         <hr />
@@ -54,7 +116,12 @@ const TrueFalseEditor = () => {
           <textarea
             className="form-control"
             placeholder="Enter your question here"
-            value="2+2="
+            value={question.questionText}
+            onChange={(e) =>
+              dispatch(
+                setQuestion({ ...question, questionText: e.target.value })
+              )
+            }
             rows={4}
           />
         </div>
@@ -66,8 +133,16 @@ const TrueFalseEditor = () => {
               id="true"
               name="answer"
               value="true"
-              // checked={quiz.answer === 'true'}
-              // onChange={(e) => dispatch(setQuiz({ ...quiz, answer: e.target.value }))}
+              checked={answer.isCorrect}
+              onChange={(e) =>
+                dispatch(
+                  setAnswer({
+                    ...answer,
+                    isCorrect: e.target.checked,
+                    text: "True",
+                  })
+                )
+              }
             />
             <label htmlFor="true">True</label>
           </div>
@@ -77,16 +152,39 @@ const TrueFalseEditor = () => {
               id="false"
               name="answer"
               value="false"
-              // checked={quiz.answer === 'false'}
-              // onChange={(e) => dispatch(setQuiz({ ...quiz, answer: e.target.value }))}
+              checked={answer.isCorrect}
+              onChange={(e) =>
+                dispatch(
+                  setAnswer({
+                    ...answer,
+                    isCorrect: e.target.checked,
+                    text: "False",
+                  })
+                )
+              }
             />
             <label htmlFor="false">False</label>
           </div>
         </div>
       </div>
       <div className="d-flex justify-content-end">
-        <button className="btn btn-primary">Update Question</button>
-        <button className="btn btn-primary">Cancel</button>
+        <button
+          className="btn btn-primary m-2"
+          onClick={handleUpdateQuestionAndUpdateAnswer}
+        >
+          <Link
+            to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions`}
+          >
+            Update Question
+          </Link>
+        </button>
+        <button className="btn btn-primary m-2">
+          <Link
+            to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions`}
+          >
+            Cancel
+          </Link>
+        </button>
       </div>
     </div>
   );

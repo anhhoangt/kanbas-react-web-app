@@ -1,24 +1,78 @@
-import React, { useState } from "react";
-import TrueFalseEditor from "../TrueFalseEditor";
-import FillInBlanksEditor from "../FillInBlankEditor";
+import React, { useState, useEffect } from "react";
+
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { KanbasState } from "../../../../store/store";
+import { useDispatch } from "react-redux";
+import {
+  setAnswer,
+  setAnswers,
+  addAnswer,
+  updateAnswer,
+  deleteAnswer,
+} from "../../../../store/answersReducer";
+import {
+  setQuestion,
+  updateQuestion,
+} from "../../../../store/questionsReducer";
+import * as answersClient from "../answerClient";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import * as questionsClient from "../client";
 
 const MultipleChoiceEditor = () => {
-  const [choices, setChoices] = useState([{ text: "", isCorrect: false }]);
-  const [questionType, setQuestionType] = useState("");
+  const { courseId, quizId, questionId } = useParams();
+  const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
+  const question = useSelector(
+    (state: KanbasState) => state.questionsReducer.question
+  );
+  // const questionList = useSelector(
+  //   (state: KanbasState) => state.questionsReducer.questions
+  // );
+  const answer = useSelector(
+    (state: KanbasState) => state.answersReducer.answer
+  );
+  const answerList = useSelector(
+    (state: KanbasState) => state.answersReducer.answers
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddChoice = () => {
-    setChoices([...choices, { text: "", isCorrect: false }]);
+    answersClient.createNewAnswer(questionId, answer).then((answer) => {
+      dispatch(addAnswer(answer));
+    });
   };
 
-  const handleRemoveChoice = (index: any) => {
-    setChoices(choices.filter((_, i) => i !== index));
+  const handleUpdateAnswer = async () => {
+    const status = await answersClient.updateAnswer(answer);
+    dispatch(updateAnswer(answer));
   };
 
-  const handleChoiceChange = (index: any, text: any, isCorrect: boolean) => {
-    const newChoices = [...choices];
-    newChoices[index] = { text, isCorrect };
-    setChoices(newChoices);
+  const handleDeleteAnswer = (answerId: string) => {
+    if (!window.confirm("Are you sure you want to delete this answer?")) {
+      return;
+    }
+    answersClient.deleteAnswer(answerId).then((status) => {
+      dispatch(deleteAnswer(answerId));
+    });
   };
+
+  const handleUpdateQuestion = async () => {
+    const status = await questionsClient.updateQuestion(question);
+    dispatch(updateQuestion(question));
+  };
+
+  const handleUpdateQuestionAndUpdateChoice = () => {
+    // handleUpdateAnswer();
+    handleUpdateQuestion();
+  };
+
+  useEffect(() => {
+    answersClient.findAnswersForQuestion(questionId).then((answers) => {
+      dispatch(setAnswers(answers));
+    });
+  }, [questionId]);
 
   return (
     <div className="container-fluid">
@@ -26,24 +80,58 @@ const MultipleChoiceEditor = () => {
         <input
           type="text"
           placeholder="Question Title"
-          value="Question Title"
+          value={question.title}
+          onChange={(e) =>
+            dispatch(setQuestion({ ...question, title: e.target.value }))
+          }
           style={{ flex: 1 }}
           className="form-control w-50"
         />
-        <select
-          value={questionType}
-          onChange={(e) => setQuestionType(e.target.value)}
-          style={{ flex: 1 }}
-          className="form-select w-25"
-        >
-          <option value="true/false">True/False</option>
-          <option value="multiple choice">Multiple Choice</option>
-          <option value="fill in blank">Fill in Blank</option>
-        </select>
-        {/* {questionType === "true/false" && <TrueFalseEditor />}
-        {questionType === "fill in blank" && <FillInBlanksEditor />} */}
+
         <div className="float-end" style={{ flex: 1 }}>
-          pts: <input type="number" value="1" />
+          pts:{" "}
+          <input
+            type="number"
+            value={question.points}
+            onChange={(e) =>
+              dispatch(setQuestion({ ...question, points: e.target.value }))
+            }
+          />
+        </div>
+
+        <div className="col mb-5">
+          <ul className="nav nav-tabs">
+            <li className="nav-item">
+              <NavLink
+                to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/multiple/${questionId}`}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Multiple Choice
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/truefalse/${questionId}`}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                True/False
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions/Questions/fillblank/${questionId}`}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Fill In The Blank
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
       <hr />
@@ -56,45 +144,90 @@ const MultipleChoiceEditor = () => {
         <textarea
           className="form-control"
           placeholder="Enter your question here"
-          value="2+2="
+          value={question.questionText}
+          onChange={(e) =>
+            dispatch(setQuestion({ ...question, questionText: e.target.value }))
+          }
           rows={4}
         />
       </div>
       <div>
-        <h5>Choices:</h5>
-        {choices.map((choice, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center" }}>
+        <h5>Answers:</h5>
+
+        <ul className="list-group">
+          <li className="list-group-item d-flex m-2">
             <input
               type="radio"
-              checked={choice.isCorrect}
+              checked={answer.isCorrect}
               onChange={(e) =>
-                handleChoiceChange(index, choice.text, e.target.checked)
+                dispatch(setAnswer({ ...answer, isCorrect: e.target.checked }))
               }
-              style={{ height: "fit-content" }}
             />
             <textarea
-              value={choice.text}
+              className="form-control w-75 m-1"
+              value={answer.text}
               onChange={(e) =>
-                handleChoiceChange(index, e.target.value, choice.isCorrect)
+                dispatch(setAnswer({ ...answer, text: e.target.value }))
               }
-              style={{ flex: 1, marginLeft: "10px", marginRight: "10px" }}
             />
-
-            <button
-              onClick={() => handleRemoveChoice(index)}
-              style={{ height: "fit-content" }}
-            >
-              Remove
-            </button>
+            <div className="m-3">
+              <button onClick={handleAddChoice} className="btn btn-success m-1">
+                Add
+              </button>
+              <button onClick={handleUpdateAnswer} className="btn btn-info m-1">
+                Update
+              </button>
+            </div>
+          </li>
+          <div>
+            {Array.isArray(answerList) &&
+              answerList
+                .filter((answer: any) => answer.question === questionId)
+                .map((answer: any, index: any) => (
+                  <li className="list-group-item" key={index}>
+                    <input
+                      type="radio"
+                      name="answer"
+                      value={answer.isCorrect}
+                    />
+                    <input type="text" value={answer.text} />
+                    <button
+                      onClick={() => dispatch(setAnswer(answer))}
+                      className="btn btn-primary m-1"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      // onClick={() => dispatch(deleteModule(module._id))}
+                      onClick={() => handleDeleteAnswer(answer._id)}
+                      className="btn btn-danger m-1"
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ))}
           </div>
-        ))}
-        <div className="m-3">
-          <button onClick={handleAddChoice}>Add Another Choice</button>
-        </div>
+        </ul>
       </div>
+
       <div className="d-flex justify-content-end">
-        <button className="btn btn-primary m-2">Update Question</button>
-        <button className="btn btn-primary m-2">Cancel</button>
+        <button
+          className="btn btn-primary m-2"
+          onClick={handleUpdateQuestionAndUpdateChoice}
+        >
+          <Link
+            to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions`}
+          >
+            Update Question
+          </Link>
+        </button>
+        <button className="btn btn-primary m-2">
+          <Link
+            to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit-questions`}
+          >
+            Cancel
+          </Link>
+        </button>
       </div>
     </div>
   );

@@ -436,7 +436,7 @@ const QuizDetailsEditor = () => {
                 <Link to={`/Kanbas/Courses/${courseId}/Quizzes`}>Cancel</Link>
               </button>
               <button onClick={handleUpdateAndPublish} className="btn m-1">
-                <Link to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz._id}`}>
+                <Link to={`/Kanbas/Courses/${courseId}/Quizzes`}>
                   Save & Publish
                 </Link>
               </button>

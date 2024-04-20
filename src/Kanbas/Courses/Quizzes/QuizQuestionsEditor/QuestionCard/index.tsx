@@ -1,6 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { KanbasState } from "../../../../store/store";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const QuestionCard = () => {
+const QuestionCard = (questionId: any) => {
+  const { courseId, quizId } = useParams();
+  const question = useSelector(
+    (state: KanbasState) => state.questionsReducer.question
+  );
+  const answerList = useSelector(
+    (state: KanbasState) => state.answersReducer.answers
+  );
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div
@@ -19,15 +32,23 @@ const QuestionCard = () => {
             marginBottom: "10px",
           }}
         >
-          <h5>Question 1</h5>
-          <div>1 pts</div>
+          <h5>{question.title}</h5>
+          <div>{question.points} pts</div>
         </div>
-        <p>What is the capital of France?</p>
+        <p>{question.questionText}</p>
+
+        {/*  show answerList of this question */}
         <div>
-          <input type="radio" id="paris" name="answer" value="paris" />
-          <label htmlFor="paris">Paris</label>
+          {Array.isArray(answerList) &&
+            answerList
+              .filter((answer: any) => answer.question === questionId)
+              .map((answer: any, index: any) => (
+                <li className="list-group-item" key={index}>
+                  <input type="radio" name="answer" value={answer.isCorrect} />
+                  <input type="text" value={answer.text} />
+                </li>
+              ))}
         </div>
-        {/* Add more choices here */}
       </div>
     </div>
   );
