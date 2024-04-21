@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// export const USERS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/users";
-export const BASE_API = "http://localhost:4000";
-export const USERS_API = `${BASE_API}/api/users`;
+export const USERS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/users";
+// export const BASE_API = "http://localhost:4000";
+// export const USERS_API = `${BASE_API}/api/users`;
 export interface User { _id: string; username: string; password: string; role: string;
 firstName: string, lastName: string, dob: string, email: string,  };
 

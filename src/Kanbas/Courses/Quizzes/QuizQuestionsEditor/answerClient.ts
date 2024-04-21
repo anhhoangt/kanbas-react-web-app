@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// const ANSWERS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/answers";
-// const QUESTIONS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/questions";
-const API_BASE = "http://localhost:4000";
-const ANSWER_API = `${API_BASE}/api/answers`;
-const QUESTIONS_API = `${API_BASE}/api/questions`;
+const ANSWER_API = "https://kanbas-node-server-app-bshj.onrender.com/api/answers";
+const QUESTIONS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/questions";
+// const API_BASE = "http://localhost:4000";
+// const ANSWER_API = `${API_BASE}/api/answers`;
+// const QUESTIONS_API = `${API_BASE}/api/questions`;
 
 export const fetchAllAnswers = async () => {
     const response = await axios.get(`${ANSWER_API}`);
