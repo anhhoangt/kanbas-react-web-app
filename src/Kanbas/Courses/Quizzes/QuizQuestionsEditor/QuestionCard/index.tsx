@@ -12,7 +12,6 @@ const QuestionCard = (questionId: any) => {
   const answerList = useSelector(
     (state: KanbasState) => state.answersReducer.answers
   );
-  const dispatch = useDispatch();
 
   return (
     <div>
@@ -41,7 +40,7 @@ const QuestionCard = (questionId: any) => {
         <div>
           {Array.isArray(answerList) &&
             answerList
-              .filter((answer: any) => answer.question === questionId)
+              .filter((answer: any) => answer.question === question._id)
               .map((answer: any, index: any) => (
                 <li className="list-group-item" key={index}>
                   <input type="radio" name="answer" value={answer.isCorrect} />

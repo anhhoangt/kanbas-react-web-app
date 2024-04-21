@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// const QUESTIONS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/questions";
-// const QUIZZES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/quizzes";
-const API_BASE = "http://localhost:4000";
-const QUIZZES_API = `${API_BASE}/api/quizzes`;
-const QUESTIONS_API = `${API_BASE}/api/questions`;
+const QUESTIONS_API = "https://kanbas-node-server-app-bshj.onrender.com/api/questions";
+const QUIZZES_API = "https://kanbas-node-server-app-bshj.onrender.com/api/quizzes";
+// const API_BASE = "http://localhost:4000";
+// const QUIZZES_API = `${API_BASE}/api/quizzes`;
+// const QUESTIONS_API = `${API_BASE}/api/questions`;
 
 export const fetchAllQuestions = async () => {
   const response = await axios.get(`${QUESTIONS_API}`);
